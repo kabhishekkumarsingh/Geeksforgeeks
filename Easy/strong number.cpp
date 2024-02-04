@@ -1,57 +1,45 @@
 //{ Driver Code Starts
-#include <bits/stdc++.h> 
-using namespace std; 
+
+#include<bits/stdc++.h>
+using namespace std;
 
 // } Driver Code Ends
-
 class Solution
-{   
-    public:
-    //Function to rotate matrix anticlockwise by 90 degrees.
-    void rotateby90(vector<vector<int> >& matrix, int n) 
-    { 
-        // code here 
-        for(int i=0;i<n;i++){
-            for(int j=0;j<i;j++){
-                swap(matrix[i][j],matrix[j][i]);
-            }
-        }
-        for(int i=0;i<(n/2);i++){
-            for(int j=0;j<n;j++){
-                swap(matrix[i][j],matrix[n-1-i][j]);
-            }
-        }
-    } 
+{
+public:
+	public:
+	int fact(int n){
+	    if(n==0) return 1;
+	    else return n*fact(n-1);
+	}
+		int is_StrongNumber(int n)
+		{
+		    // Code here.
+		    int x=n;
+		    int y=0;
+		    while(n>0){
+		        y+=fact(n%10);
+		        n=n/10;
+		    }
+		    if(y==x) return 1;
+		    else return 0;
+		}
 };
 
 
 //{ Driver Code Starts.
-int main() {
-    int t;
-    cin>>t;
-    
-    while(t--) 
+int main(){
+    int T;
+    cin >> T;
+    while(T--)
     {
-        int n;
-        cin>>n;
-        vector<vector<int> > matrix(n); 
-
-        for(int i=0; i<n; i++)
-        {
-            matrix[i].assign(n, 0);
-            for( int j=0; j<n; j++)
-            {
-                cin>>matrix[i][j];
-            }
-        }
-
-        Solution ob;
-        ob.rotateby90(matrix, n);
-        for (int i = 0; i < n; ++i)
-            for (int j = 0; j < n; ++j)
-                cout<<matrix[i][j]<<" ";
-        cout<<endl;
+    	int n; 
+    	cin >> n;
+    	Solution ob;
+    	int ans = ob.is_StrongNumber(n);
+    	cout << ans <<"\n";
     }
-    return 0;
+	return 0;
 }
+
 // } Driver Code Ends
